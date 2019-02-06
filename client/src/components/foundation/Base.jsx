@@ -20,7 +20,7 @@ class Base extends Component {
               <div className="col-md-12 text-center">
                 <h1 className="display-2 mb-4">Welcome to Alfabeat
                 </h1>
-                <h2 className="lead"> Social network for alfa romeo enthusiasts, connect and share your thoughts with others</h2>
+                <h2 className="lead"> Social network for Alfa Romeo enthusiasts, connect and share your thoughts with others</h2>
                 <hr />
               </div>
             </div>
