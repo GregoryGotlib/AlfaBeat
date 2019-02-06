@@ -28,7 +28,7 @@ class CarInfo extends Component {
       ))
     return (
       <div>
-        <h3 className="mb-4">Your vehicle  History Details</h3>
+        <h3 className="mb-4">Your vehicle  history details</h3>
         <div className="table">
             <div className="thead">
                 <tr>
@@ -37,7 +37,7 @@ class CarInfo extends Component {
                     <th>Year of manufacture</th>
                     <th>Transmission</th>
                     <th>Time of ownership</th>
-                    <th>Reliability Rating</th>
+                    <th>Reliability</th>
                     <th>Status</th>
                     <th></th>
                 </tr>

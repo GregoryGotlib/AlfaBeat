@@ -12,20 +12,19 @@ const validateCarInfoInput = require('../../validation/carInfo');
 const multer = require('multer');
 const fs = require('fs');
 
-//Where to store uploads
+
+// Multer settings
 const storage = multer.diskStorage({
     destination: function (req,res,cb){
-        cb(null,'uploads/')
+        cb(null,'./client/public/uploads/')
     },
 
-    filename: function (req, file, cb) {
-        var imageName = file.originalname;
-        //imageName += "_randomstring"
-        cb(null, imageName);
+    filename: function (request, file, cb) {
+        console.log(file);
+        cb(null, file.originalname)
     }
 });
 
-//Filtering image type only
 const fileFilter = (req,file,cb)=>{
     if(file.mimetype === 'image/jpeg' || file.mimetype === 'image/png' || file.mimetype === 'image/jpg'){
         cb(null,true);
@@ -40,7 +39,7 @@ const upload = multer({
 });
 
 
-//api/profile -> 
+// Get profile 
 router.get('/', passport.authenticate('jwt',{session: false }),(req, res) => {
       const errors = {};
       Profile.findOne({ user: req.user.id })
@@ -55,7 +54,7 @@ router.get('/', passport.authenticate('jwt',{session: false }),(req, res) => {
     }
   );
 
-// @route POST api/profile
+
 // Post/Update profile
 router.post('/', passport.authenticate('jwt',{session: false}), (req,res)=>{
     const {errors,isValid} = validateProfileInput(req.body);
@@ -93,12 +92,7 @@ router.post('/', passport.authenticate('jwt',{session: false}), (req,res)=>{
     if(req.body.profession){
         profilesData.profession = req.body.profession;
     }
-    /*
-    if (req.body.model) {
-        profilesData.model = req.body.model;
-    }
-    */
-    Profile.findOne({user: req.user.id}).then(profile =>{
+      Profile.findOne({user: req.user.id}).then(profile =>{
         if(profile){
             // In case of existing profile - > updating..
             Profile.findOneAndUpdate({user:req.user.id},{$set: profilesData}, {new:true}).then(profile=>{
@@ -123,7 +117,7 @@ router.post('/', passport.authenticate('jwt',{session: false}), (req,res)=>{
     });
 });
 
-// @route GET api/profile/route/:route
+
 // Get profile by route
 router.get('/route/:route',(req,res)=>{
     Profile.findOne({route: req.params.route}).populate('user',['name','avatar']).then(profile =>{
@@ -136,7 +130,6 @@ router.get('/route/:route',(req,res)=>{
     });
 });
 
-// @route GET api/profile/user/:user_id
 // Get profile by user id
 router.get('/user/:user_id',(req,res)=>{
     Profile.findOne({user: req.params.user_id}).populate('user',['name','avatar']).then(profile =>{
@@ -149,7 +142,7 @@ router.get('/user/:user_id',(req,res)=>{
     });
 });
 
-// @route GET api/profile/all/
+
 // Get all profiles 
 router.get('/all',(req,res)=>{
     Profile.find().populate('user',['name','avatar']).then(profiles=>{
@@ -163,8 +156,8 @@ router.get('/all',(req,res)=>{
 });
 
 
-// @route POST api/profile/carInfo
-// post car information 
+
+// Post car information 
 router.post('/carinfo', passport.authenticate('jwt',{session:false}),(req,res)=>{
     const {errors,isValid} = validateCarInfoInput(req.body);
 
@@ -194,7 +187,7 @@ router.post('/carinfo', passport.authenticate('jwt',{session:false}),(req,res)=>
     });
 });
 
-// @route DELETE api/profile/carInfo/:carinfo_id
+
 // Delete car information 
 router.delete('/carinfo/:carinfo_id', passport.authenticate('jwt',{session:false}),(req,res)=>{
     Profile.findOne({user: req.user.id}).then(profile=>{ 
@@ -209,7 +202,7 @@ router.delete('/carinfo/:carinfo_id', passport.authenticate('jwt',{session:false
 });
 
 
-// @route DELETE api/profile
+// Delete profile
 router.delete('/', passport.authenticate('jwt',{session:false}),(req,res)=>{
     Profile.findOneAndRemove({user: req.user.id}).then(()=>{
         User.findOneAndRemove({_id:req.user.id}).then(()=>{
@@ -218,54 +211,41 @@ router.delete('/', passport.authenticate('jwt',{session:false}),(req,res)=>{
     });
 });
 
-
+// Post image
 router.post('/img_data',upload.single('image'),passport.authenticate('jwt',{session:false}),(req,res)=>{
     
-    console.log('shit')
+    const file = req.file;
     Profile.findOne({user: req.user.id}).then(profile=>{ 
-        console.log('shit found profile')
-        var img = fs.readFileSync(req.file.path);
+      
+        var img = fs.readFileSync(file.path);
         var encImg = img.toString('base64');
         const newImg = {
             data:new Buffer(encImg,'base64'),
-            contentType:req.file.mimetype,
-            name:req.file.originalname,
-            path:req.file.path
-        };
-        console.log(newImg);
-
-        profile.image.unshift(newImg);
-        profile.save().then(profile=>{
-            res.json(profile);
-        });
-   
-    }).catch(error=>{
-        res.status(404).json(error);
-    });
-});
-
-/*
-router.post('/img_data',upload.single('image'),passport.authenticate('jwt',{session:false}),(req,res)=>{
-    Profile.findOne({user: req.user.id}).then(profile=>{ 
-        const newImg = {
-            data:req.file.path
-        };
-        console.log(newImg);
+            contentType:file.mimetype,
+            name:file.originalname,
+            path:`/uploads/${file.originalname}`
+        };        
+        //console.log(newImg);
+        //newImg.save()
         profile.image.push(newImg);
+    
         profile.save().then(profile=>{
             res.json(profile);
         });
+        console.log(profile);
     }).catch(error=>{
         res.status(404).json(error);
     });
 });
- */
 
-/*
-router.delete('/photo/:photo_id', passport.authenticate('jwt',{session:false}),(req,res)=>{
+// Delete image
+router.delete('/img_data/:image_id', passport.authenticate('jwt',{session:false}),(req,res)=>{
+    console.log('delete from node..')
     Profile.findOne({user: req.user.id}).then(profile=>{ 
-    const index = profile.photos.map(item => item.id).indexOf(req.params.photo_id);
-    profile.photos.splice(index,1);
+    console.log('found profile..')
+    const index = profile.image.map(image => image.id).indexOf(req.params.image_id);
+    console.log(index)
+    profile.image.splice(index,1);
     profile.save().then(profile=>{
         res.json(profile);
     })    
@@ -273,5 +253,5 @@ router.delete('/photo/:photo_id', passport.authenticate('jwt',{session:false}),(
         res.status(404).json(error);
     });
 });
-*/
+
 module.exports = router;

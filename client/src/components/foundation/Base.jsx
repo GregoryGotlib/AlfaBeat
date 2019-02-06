@@ -18,12 +18,10 @@ class Base extends Component {
           <div className="container">
             <div className="row">
               <div className="col-md-12 text-center">
-                <h1 className="display-3 mb-4">Alfa Connector
+                <h1 className="display-2 mb-4">Welcome to Alfabeat
                 </h1>
-                <p className="lead"> Create a Alfa romeo owner profile, share your thoughts with others and help each other to fall in love with this machine</p>
+                <h2 className="lead"> Social network for alfa romeo enthusiasts, connect and share your thoughts with others</h2>
                 <hr />
-                <a href="/register" className="btn btn-lg btn-info mr-2">Sign Up</a>
-                <a href="/login" className="btn btn-lg btn-success">Login</a>
               </div>
             </div>
           </div>

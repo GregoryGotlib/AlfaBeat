@@ -49,6 +49,7 @@ import PropTypes from 'prop-types';
     const errors = this.props.errors;
     
     return (
+  <div className="card mt-20 card mt-20 shadow p-3 mb-5 bg-white rounded">
     <div className="login">
       <div className="container">
         <div className="row">
@@ -74,6 +75,7 @@ import PropTypes from 'prop-types';
         </div>
       </div>
     </div>
+  </div>
     )
   }
 }

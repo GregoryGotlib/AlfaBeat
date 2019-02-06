@@ -59,6 +59,7 @@ class Register extends Component {
   render() {
     const errors = this.props.errors;
   return (
+<div className="card mt-20 shadow p-3 mb-5 bg-white rounded">
   <div className="register">
     <div className="container">
       <div className="row">
@@ -99,6 +100,7 @@ class Register extends Component {
       </div>
     </div>
   </div>
+</div>
     )
   }
 }

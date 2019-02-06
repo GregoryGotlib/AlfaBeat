@@ -7,13 +7,9 @@ const Post = require('../../models/Post');
 const validatePostInput = require('../../validation/post');
 const Profile = require('../../models/Profile');
 
-// @route   GET api/posts/test
-router.get('/test', (req,res)=>{
-    res.json({msg:'Inside Posts...'})
-});
 
-// @route POST api/posts
-// Post new post
+
+// New post
 router.post('/',passport.authenticate('jwt',{session:false}),(req,res)=>{
     const {errors,isValid} = validatePostInput(req.body);
 
@@ -33,7 +29,6 @@ router.post('/',passport.authenticate('jwt',{session:false}),(req,res)=>{
     });
 })
 
-// @route GET api/posts
 // Get posts
 router.get('/',(req,res)=>{
     Post.find().sort({date: -1}).then(posts=>{
@@ -43,7 +38,6 @@ router.get('/',(req,res)=>{
     });
 });
 
-// @route GET api/posts/:id
 // Get posts by id
 router.get('/:id',(req,res)=>{
     Post.findById(req.params.id).then(post=>{
@@ -53,7 +47,6 @@ router.get('/:id',(req,res)=>{
     });
 });
 
-// @route DELETE api/posts/:id
 // Delete posts by user id
 router.delete('/:id',passport.authenticate('jwt',{session:false}),(req,res)=>{
     Profile.findOne({user: req.user.id}).then(profile=>{
@@ -69,7 +62,6 @@ router.delete('/:id',passport.authenticate('jwt',{session:false}),(req,res)=>{
    
 });
 
-// @route POST api/posts/like/:id
 // Like post
 router.post('/like/:id',passport.authenticate('jwt',{session:false}),(req,res)=>{
     Profile.findOne({user: req.user.id}).then(profile=>{
@@ -85,7 +77,6 @@ router.post('/like/:id',passport.authenticate('jwt',{session:false}),(req,res)=>
     });
 });
 
-// @route POST api/posts/unlike/:id
 // UnLike post
 router.post('/unlike/:id',passport.authenticate('jwt',{session:false}),(req,res)=>{
     Profile.findOne({user: req.user.id}).then(profile=>{
@@ -105,7 +96,6 @@ router.post('/unlike/:id',passport.authenticate('jwt',{session:false}),(req,res)
 });
 
 
-// @route POST api/posts/comment/:id
 // Comment on a post
 router.post('/comment/:id',passport.authenticate('jwt',{session:false}),(req,res)=>{
     const {errors,isValid} = validatePostInput(req.body);
@@ -132,7 +122,6 @@ router.post('/comment/:id',passport.authenticate('jwt',{session:false}),(req,res
     });
 });
 
-// @route DELETE api/posts/comment/:id/:comment_id
 // Delete comment from post
 router.delete('/comment/:id/:comment_id',passport.authenticate('jwt',{session:false}),(req,res)=>{
 

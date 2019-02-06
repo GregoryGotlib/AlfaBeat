@@ -10,10 +10,7 @@ const ProfileSchema = new Schema({
     },
 
     image:[{
-        data:{
-            type:Buffer,
-            required:true
-        },
+        data:Buffer,
         date:{
             type:Date,
             default:Date.now

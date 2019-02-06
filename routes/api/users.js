@@ -14,13 +14,7 @@ const validateLoginInput = require('../../validation/login');
 //
 
 
-
-// @route   GET api/users/test
-router.get('/test', (req,res)=>{
-    res.json({msg:'Inside Users...'})
-});
-
-// @route   POST api/users/register
+// Register
 router.post('/register',(req,res)=>{
     const { errors, isValid } = validateRegInput(req.body);
     
@@ -59,7 +53,7 @@ router.post('/register',(req,res)=>{
     });
 });
 
-// @route   POST api/users/register
+// Login
 router.post('/login',(req,res)=>{
 
     const { errors, isValid } = validateLoginInput(req.body);
@@ -93,7 +87,7 @@ router.post('/login',(req,res)=>{
     });
 });
 
-// @route GET api/users/current
+// Get current user
 router.get('/current',passport.authenticate('jwt',{session:false}),(req,res)=>{
     res.json(req.user);
 });

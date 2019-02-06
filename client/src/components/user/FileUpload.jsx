@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { uploadImage } from "../../actions/profile";
+import { withRouter } from 'react-router';
 import propTypes from "prop-types";
 import img from "../../images/starIcon.png";
 
@@ -20,11 +21,9 @@ class FileUpload extends Component {
 
   uploadHandler = event => {
     event.preventDefault();
-    const newImg = {
-      data: this.state.image
-    };
-    console.log(newImg)
-    this.props.uploadImage(newImg, this.props.history);
+    let formData = new FormData();
+    formData.append('image',this.state.image);
+    this.props.uploadImage(formData, this.props.history);
   };
 
   render(){
@@ -40,13 +39,15 @@ class FileUpload extends Component {
                 <h3 style={{ color: "white", marginLeft: "12px" }}>
                   Upload Photo
                 </h3>
-              </div>
+              </div> 
               <div className="card-body">
                 <p className="card-text" style={{ fontWeight: "bold" }}>
                   * Please upload your vehicle photos only, no selfies wanted!
                 </p>
-                <input type="file" onChange={this.fileChangedHandler} />
-                <div className="mt-5">
+                <form method="post" enctype="multipart/form-data">
+                  <input type="file" name="image" onChange={this.fileChangedHandler} />
+                </form>
+                  <div className="mt-5">
                   <button className="btn btn-info" onClick={this.uploadHandler}>
                     Upload
                   </button>
@@ -71,4 +72,4 @@ const mapStateToProps = state => ({
   errors: state.errors
 });
 
-export default connect(mapStateToProps,{ uploadImage })(FileUpload);
+export default connect(mapStateToProps,{ uploadImage })(withRouter(FileUpload));

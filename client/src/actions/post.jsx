@@ -1,6 +1,5 @@
 import axios from 'axios';
 
-// Add new post 
 export const addPost = (data) => dispatch =>{
     dispatch(resetErrors());
     axios.post('/api/posts',data).then(res =>

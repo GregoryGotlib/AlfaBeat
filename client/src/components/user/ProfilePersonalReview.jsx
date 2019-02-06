@@ -7,14 +7,14 @@ export default class ProfilePersonalReview extends Component {
     const userFirstName = profile.user.name.trim().split(' ')[0];
     const personalReview = profile.carInfo.map(data =>(
         <div>
-            <p style={{color:'rgb(0, 51, 204)'}}><strong style={{color:'black'}}>{data.model}: </strong>"{data.personalReview}"</p>
+            <p style={{color:'rgb(255,0,0)'}}><strong style={{color:'black'}}>{data.model}: </strong>"{data.personalReview}"</p>
         </div>
     ))
 
     return (
     <div class="row">
         <div class="col-md-12">
-        <h3 class="text-center text-info">{userFirstName}'s Personal Review</h3>
+        <h3 class="text-center text-info">{userFirstName}'s personal review</h3>
           <div class="card card-body bg-light mb-3">
             <p class="lead">{personalReview}</p>
           </div>

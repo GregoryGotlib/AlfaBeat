@@ -1,13 +1,12 @@
-
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getProfilebyRoute } from '../../actions/profile';
 import propTypes from 'prop-types';
 import ProfileHeaderView from './ProfileHeaderView';
 import ProfilePersonalReview from './ProfilePersonalReview';
-import Spinner from '../foundation/Spinner';
+import ProfileImageDisplay from './ProfileImageDisplay';
 import ProfileCarInfo from './ProfileCarInfo';
-import PostFeed from './PostFeed';
+import Spinner from '../foundation/Spinner';
 
 
  class ProfileGenerator extends Component {
@@ -19,8 +18,6 @@ import PostFeed from './PostFeed';
     }
   }
   
-
-
   render() {
     const profile = this.props.profile.profile;
     const loading = this.props.profile.loading;
@@ -43,6 +40,7 @@ import PostFeed from './PostFeed';
           <ProfileHeaderView profile={profile}/>
           <ProfilePersonalReview profile={profile}/>
           <ProfileCarInfo carInfo={profile.carInfo}/>
+          <ProfileImageDisplay image={profile.image}/>
         </div>
       )
     }

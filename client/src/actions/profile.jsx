@@ -1,6 +1,5 @@
 import axios from 'axios';
 
-// Get profile if exists
 export const getProfile = () => dispatch =>{
     dispatch(loadingProfile());
     axios.get('/api/profile').then(res =>
@@ -31,7 +30,6 @@ export const getProfiles = () => dispatch =>{
     );
 };
 
-// Go to dashboard when profile created
 export const createProfile = (data, history) => dispatch =>{
     axios.post('/api/profile',data).then(res =>{
         history.push('/dashboard');
@@ -58,13 +56,14 @@ export const getProfilebyRoute = (data) => dispatch =>{
         });
 };
 
-//Upload image
 export const uploadImage = (data,history) => dispatch =>{
-    console.log('in action');
-    console.log(data);
+
+    console.log('inside imageUpload action');
+
     axios.post('/api/profile/img_data',data).then(res=>{
         history.push('/dashboard');
     }).catch(error=>{
+        console.log('Received an error with image upload')
         dispatch({
             type:'ERRORS',
             payload:error.response.data
@@ -72,7 +71,23 @@ export const uploadImage = (data,history) => dispatch =>{
     });
 };
 
-// Create vehicle  information
+export const deleteImage = (imageID) => dispatch =>{
+    if(window.confirm('You sure you want to delete this image?')){
+        axios.delete(`/api/profile/img_data/${imageID}`).then(res =>{
+            console.log('inside delete image action...')
+            dispatch({
+                type: 'GET_PROFILE',
+                payload: res.data
+            })
+        }).catch(error=>{
+            dispatch({
+                type:'ERRORS',
+                payload: error.response.data
+              })
+        });
+    }
+};
+
 export const createCarInfo = (data, history) => dispatch =>{
     axios.post('/api/profile/carInfo',data).then(res=>{
         history.push('/dashboard');
@@ -84,9 +99,9 @@ export const createCarInfo = (data, history) => dispatch =>{
     });
 };
 
-export const deleteCarInfo = (infoID) => dispatch =>{
+export const deleteCarInfo = (carInfoID) => dispatch =>{
     if(window.confirm('You sure you want to delete your vehicle  information?')){
-        axios.delete(`/api/profile/carinfo/${infoID}`).then(res =>{
+        axios.delete(`/api/profile/carinfo/${carInfoID}`).then(res =>{
             dispatch({
                 type: 'GET_PROFILE',
                 payload: res.data

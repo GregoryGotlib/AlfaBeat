@@ -216,6 +216,7 @@ onSubmit = (event) =>{
       ));
       
     return (
+    <div className="card mt-20 card mt-20 shadow p-3 mb-5 bg-white rounded">
       <div className="createCarInfo">
         <div className="container">
             <div className="row">
@@ -338,6 +339,7 @@ onSubmit = (event) =>{
                 </div>   
             </div>
         </div>
+      </div>
       </div>
     )
   }

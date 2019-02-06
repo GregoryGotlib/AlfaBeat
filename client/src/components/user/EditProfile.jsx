@@ -200,6 +200,7 @@ class EditProfile extends Component {
       ];
 
 return (
+<div className="card mt-20 card mt-20 shadow p-3 mb-5 bg-white rounded">
 <div className="createProfile"> 
     <div className="container">
         <div className="row">
@@ -248,13 +249,14 @@ return (
                     </div>
                     <div className="mb-3">
                         {socialData}
-                    <input type="submit" value="Submit" className="btn btn-success btn-block mt-3"/>
+                    <input type="submit" value="Edit" className="btn btn-success btn-block mt-3"/>
                     <a href="/dashboard" className="btn btn-danger btn-block mt-3 mb-2">Go Back</a>
                     </div>
                 </form>
             </div>
         </div>
     </div>
+</div>
 </div>
     )
   }

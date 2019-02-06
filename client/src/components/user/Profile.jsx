@@ -11,7 +11,7 @@ export default class Profile extends Component {
           Add vehicle info</a>
         <a href="/fileupload" className="btn btn-light">
           <i className="far fa-image text-info mr-1"></i>
-          Add photo album</a>
+          Add photo</a>
     </div>
     )
   }
