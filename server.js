@@ -32,12 +32,19 @@ app.use(express.static(uploadsDir));
 
 // Static files for prod
 if(process.env.NODE_ENV === 'production'){
-
+/*
     app.use(express.static('client/build'));
 
     app.get('*',(req,res) => {
         res.sendFile(path.resolve(__dirname,'client','build','index.html'));
     })
+    */
+   app.use(express.static(path.join(__dirname, 'client/build')));
+
+    app.get('*', (request, response) => {
+        response.sendFile(path.join(__dirname + 'client/build/index.html'));
+        });
+
 }
 
 
