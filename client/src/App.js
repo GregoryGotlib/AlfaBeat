@@ -39,12 +39,18 @@ if(localStorage.userToken){
 class App extends Component {
   render() {
     return (
-      <Provider store={ store }>
+      // The <Provider /> makes the Redux store available to any nested components that have been wrapped in the connect() function.
+
+      //React Router, and dynamic, client-side routing, allows us to build a single-page web application with navigation without the page refreshing as the user navigates.
+    
+      //<Switch> is unique in that it renders a route exclusively. In contrast, every <Route> that matches the location renders inclusively.
+
+      // 
+      <Provider store={ store }> 
         <Router>
           <div className="App">
             <CustomNavbar/>
             <Route exact path="/" component={Base}/>
-            <div className="container">
               <Route exact path="/register" component={Register}/>
               <Route exact path="/login" component={Login}/>
               <Route exact path="/profiles" component={Profiles}/>
@@ -71,7 +77,6 @@ class App extends Component {
                 <PrivateRoute exact path="/fileupload" component={FileUpload}/>
               </Switch>
             </div>
-          </div>
         </Router>
       </Provider>
     );

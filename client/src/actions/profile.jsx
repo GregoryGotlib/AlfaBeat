@@ -61,7 +61,7 @@ export const uploadImage = (data,history) => dispatch =>{
     console.log('inside imageUpload action');
 
     axios.post('/api/profile/img_data',data).then(res=>{
-        history.push('/dashboard');
+        history.push('/');
     }).catch(error=>{
         console.log('Received an error with image upload')
         dispatch({

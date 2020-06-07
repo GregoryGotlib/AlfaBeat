@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { logUser } from '../../actions/auth';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import '../../style/Login.css';
 
  class Login extends Component {
   constructor(){
@@ -49,7 +50,8 @@ import PropTypes from 'prop-types';
     const errors = this.props.errors;
     
     return (
-  <div className="card mt-20 card mt-20 shadow p-3 mb-5 bg-white rounded">
+  <div className='login-container'>
+  <div className="card shadow p-3 mb-5 bg-white rounded" id='login-card'>
     <div className="login">
       <div className="container">
         <div className="row">
@@ -69,12 +71,16 @@ import PropTypes from 'prop-types';
                 'is-invalid':errors.password})} placeholder="Password" name="password"  value={this.state.password} onChange={this.passwordHandler}/>
                 {errors.password && (<div className="invalid-feedback">{errors.password}</div>)}
               </div>
-              <input type="submit" className="btn btn-success btn-block mt-4" />
+              <div className='buttons-container'>
+                <input type="submit" className="btn btn-success" />
+                <a className="btn btn-danger" href='/'> Cancel</a>
+            </div>
             </form>
           </div>
         </div>
       </div>
     </div>
+  </div>
   </div>
     )
   }

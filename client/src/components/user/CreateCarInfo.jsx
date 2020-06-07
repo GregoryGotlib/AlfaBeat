@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom';
 import { createCarInfo } from '../../actions/profile';
 import propTypes from 'prop-types';
 import classnames from 'classnames';
+import '../../style/CreateCarInfo.css';
 
 class CreateCarInfo extends Component {
 constructor(props){
@@ -216,7 +217,8 @@ onSubmit = (event) =>{
       ));
       
     return (
-    <div className="card mt-20 card mt-20 shadow p-3 mb-5 bg-white rounded">
+    <div className='create-info-form-container'>
+    <div className="card shadow p-3 bg-white rounded">
       <div className="createCarInfo">
         <div className="container">
             <div className="row">
@@ -331,14 +333,15 @@ onSubmit = (event) =>{
                             <small className="form-text text-muted">* Write a brief review about your experiences with owning this vehicle </small>
                             {errors.personalReview && <div className="invalid-feedback">{errors.personalReview}</div>}
                         </div>
-                        <div>
-                        <input type="submit" value="Add Information" className="btn btn-success btn-block mt-3"/>
-                        <a href="/dashboard" className="btn btn-danger btn-block mt-3 mb-2">Go Back</a>
+                        <div className='buttons-container'>
+                            <input type="submit" className="btn btn-success"/>
+                            <a href="/dashboard" className="btn btn-danger">Go Back</a>
                         </div>
                     </form>
                 </div>   
             </div>
         </div>
+      </div>
       </div>
       </div>
     )

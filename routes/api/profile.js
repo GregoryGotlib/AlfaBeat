@@ -20,7 +20,6 @@ const storage = multer.diskStorage({
     },
 
     filename: function (request, file, cb) {
-        console.log(file);
         cb(null, file.originalname)
     }
 });
@@ -232,7 +231,6 @@ router.post('/img_data',upload.single('image'),passport.authenticate('jwt',{sess
         profile.save().then(profile=>{
             res.json(profile);
         });
-        console.log(profile);
     }).catch(error=>{
         res.status(404).json(error);
     });
@@ -240,11 +238,8 @@ router.post('/img_data',upload.single('image'),passport.authenticate('jwt',{sess
 
 // Delete image
 router.delete('/img_data/:image_id', passport.authenticate('jwt',{session:false}),(req,res)=>{
-    console.log('delete from node..')
     Profile.findOne({user: req.user.id}).then(profile=>{ 
-    console.log('found profile..')
     const index = profile.image.map(image => image.id).indexOf(req.params.image_id);
-    console.log(index)
     profile.image.splice(index,1);
     profile.save().then(profile=>{
         res.json(profile);

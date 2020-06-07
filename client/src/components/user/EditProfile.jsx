@@ -5,6 +5,7 @@ import { withRouter } from 'react-router-dom';
 import propTypes from 'prop-types';
 import classnames from 'classnames';
 import checkInput from '../../utilities/checkInput';
+import '../../style/EditProfile.css';
 
 class EditProfile extends Component {
     constructor(props){
@@ -200,8 +201,8 @@ class EditProfile extends Component {
       ];
 
 return (
-<div className="card mt-20 card mt-20 shadow p-3 mb-5 bg-white rounded">
-<div className="createProfile"> 
+<div className='edit-form-container'>
+<div className="card shadow p-3 mb-5 bg-white rounded">
     <div className="container">
         <div className="row">
             <div className="col-md-8 m-auto">
@@ -249,8 +250,10 @@ return (
                     </div>
                     <div className="mb-3">
                         {socialData}
-                    <input type="submit" value="Edit" className="btn btn-success btn-block mt-3"/>
-                    <a href="/dashboard" className="btn btn-danger btn-block mt-3 mb-2">Go Back</a>
+                    <div className='buttons-container'>
+                        <input type="submit" className="btn btn-success"/>
+                        <a href="/dashboard" className="btn btn-danger">Go Back</a>
+                    </div>    
                     </div>
                 </form>
             </div>

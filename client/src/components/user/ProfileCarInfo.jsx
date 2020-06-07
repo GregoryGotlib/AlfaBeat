@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import redStar from '../../images/redStar.png';
 import yellowStar from '../../images/yellowStar.png';
 import greenStar from '../../images/greenStar.png';
+import '../../style/ProfileCarInfo.css';
 
 export default class ProfileCarInfo extends Component {
 
@@ -41,13 +42,10 @@ export default class ProfileCarInfo extends Component {
     ))
 
     return (
-    <div class="row">
-        <div class="col-md-12">
-        <h3 class="text-center text-info">Vehicle fleet history</h3>
-          <div class="card card-body bg-light mb-3">
-            <p class="lead">{carInfoDesp}
-            </p>
-          </div>
+    <div className="">
+        <p className="history-p">Ownership History</p>
+        <div className="card card-body bg-light mb-3" id='car-info-card'>
+          <p className="lead">{carInfoDesp.length ? carInfoDesp : <p>There is no ownership history yet ..</p>}</p>
         </div>
     </div>
 

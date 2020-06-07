@@ -5,6 +5,7 @@ import propTypes from 'prop-types';
 import PostForm from './PostForm';
 import Spinner from '../foundation/Spinner';
 import PostFeed from './PostFeed';
+import '../../style/Posts.css';
 
 class Posts extends Component {
 
@@ -26,14 +27,10 @@ class Posts extends Component {
 
     return (
       <div className="feed">
-        <div className="container">
-            <div className="row">
-                <div className="col-md-12">
-                    <PostForm/>
-                    {postData}
-                </div>
-            </div>
-        </div>  
+          <div className="posts-container">
+            <PostForm/>
+            {postData}
+          </div>
       </div>
     )
   }

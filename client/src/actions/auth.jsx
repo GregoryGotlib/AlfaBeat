@@ -17,6 +17,7 @@ export const regUser = (data,history) => dispatch =>{
 
 // Login via decoded token
 export const logUser = (data,history)=> dispatch =>{
+    console.log(data)
     axios.post('/api/users/login',data).then(res=>{
         const auth_token = res.data.token;
 

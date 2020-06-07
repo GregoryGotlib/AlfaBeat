@@ -1,0 +1,105 @@
+h1,h3{
+    text-align: center;
+}
+
+.wrapper{
+    display: flex;
+    height: calc(100% - 62px);
+}
+
+
+
+.tabs-container{
+    background-color: #3575b4;
+}
+
+@media(max-width:700px){
+    .wrapper{
+        display: flex;
+        height: calc(100% - 57px) !important;
+    }
+
+    #v-pills-dashboard-tab,#v-pills-edit-tab,#v-pills-info-tab,#v-pills-image-tab{
+        padding: 30px 0px 30px 9px !important; 
+    }
+
+    .info-table-container{
+        padding: 0 10px;
+    }
+}
+
+#v-pills-dashboard-tab,#v-pills-edit-tab,#v-pills-info-tab,#v-pills-image-tab{
+    padding: 30px 90px;
+}
+
+.navs-container{
+    display: flex;
+    justify-content: center;
+    margin-top: 80px;
+}
+#navs{
+    display: flex;
+}
+
+#wellcome-p{
+    text-align: center;
+    margin-top: 31px;
+    font-weight: 400;
+}
+
+.show-data-container{
+    
+}
+
+#history-p{
+    text-align: center;
+    margin-top: 70px;
+    font-weight: 400;
+    font-size: 22px;
+}
+
+#info-table{
+    width: 55%;
+    align-self: center;
+}
+
+.info-table-container{
+    text-align: -webkit-center;
+}
+
+#flex-row-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+}
+
+
+#flex-row-container > #flex-row-item {
+    flex: 0 0 33.333333%;
+}
+#flex-row-item{
+    -webkit-box-shadow: 1px 19px 16px -8px rgba(0,0,0,0.4);
+    -moz-box-shadow: 1px 19px 16px -8px rgba(0,0,0,0.4);
+    box-shadow: 1px 19px 16px -8px rgba(0,0,0,0.4);
+    margin: 12px;
+}
+
+.image-p{
+    text-align: center;
+    margin-top: 70px;
+    font-weight: 400;
+    font-size: 22px;
+}
+
+.create-profile-p{
+    text-align: center;
+    margin-top: 10px;
+    font-weight: 400;
+    font-size: 22px;
+}
+
+.show-empty-data-container{
+    text-align: center;
+    margin-top: 20px;
+}

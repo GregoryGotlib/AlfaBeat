@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { deleteCarInfo } from '../../actions/profile';
 import propTypes from 'prop-types';
+import '../../style/Dashboard.css';
 
 class CarInfo extends Component {
 
@@ -14,8 +15,9 @@ class CarInfo extends Component {
 
   render() {
       const stillOwnIt=<div style={{color:'red'}}>Still own it</div>
-      const carInfo = this.props.carInfo.map(data=>(
+      const carInfo = this.props.carInfo.map((data,index)=>(
           <tr key={data._id}>
+            <td>{index + 1}</td>
             <td>{data.brand}</td>
             <td>{data.model}</td>
             <td>{data.year}</td>
@@ -27,11 +29,12 @@ class CarInfo extends Component {
           </tr>
       ))
     return (
-      <div>
-        <h3 className="mb-4">Your vehicle  history details</h3>
-        <div className="table">
-            <div className="thead">
+      <div className='info-table-container'>
+        <p id='history-p' className="mb-4">Ownership  history details</p>
+        <table  id='info-table' className="table table-hover">
+            <thead className="thead-dark">
                 <tr>
+                    <th>#</th>
                     <th>Brand</th>
                     <th>Model</th>
                     <th>Year of manufacture</th>
@@ -41,11 +44,11 @@ class CarInfo extends Component {
                     <th>Status</th>
                     <th></th>
                 </tr>
-                <tbody>
-                    {carInfo}
-                </tbody>
-            </div>
-        </div>
+            </thead>
+            <tbody>
+                {carInfo}
+            </tbody>
+        </table>
       </div>
     )
   }

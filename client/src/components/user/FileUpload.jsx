@@ -4,6 +4,7 @@ import { uploadImage } from "../../actions/profile";
 import { withRouter } from 'react-router';
 import propTypes from "prop-types";
 import img from "../../images/starIcon.png";
+import '../../style/FileUpload.css';
 
 class FileUpload extends Component {
   constructor(props) {
@@ -28,6 +29,7 @@ class FileUpload extends Component {
 
   render(){
     return (
+    <div className='uploader-conainer'>
       <div className="container-scroller">
         <div className="container-fluid page-body-wrapper">
           <div className="container p-5">
@@ -44,7 +46,7 @@ class FileUpload extends Component {
                 <p className="card-text" style={{ fontWeight: "bold" }}>
                   * Please upload your vehicle photos only, no selfies wanted!
                 </p>
-                <form method="post" enctype="multipart/form-data">
+                <form method="post" encType="multipart/form-data">
                   <input type="file" name="image" onChange={this.fileChangedHandler} />
                 </form>
                   <div className="mt-5">
@@ -57,6 +59,7 @@ class FileUpload extends Component {
           </div>
         </div>
       </div>
+    </div>
     );
   }
 }

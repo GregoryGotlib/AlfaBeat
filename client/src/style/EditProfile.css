@@ -1,0 +1,14 @@
+.edit-form-container{
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+.card{
+    margin: 0;
+}
+
+.buttons-container{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 5px;
+}

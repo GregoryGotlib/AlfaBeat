@@ -28,17 +28,13 @@ class Profiles extends Component {
           }
       }
     return (
-      <div className="profiles">
-        <div className="container">
-            <div className="row">
-                <div className="col-md-12">
-                    <h1 className="display-4 text-center">Club Members Profile</h1>
-                    <p className="lead text-center">Browse and connect</p>
-                    {profilesData}
-                </div>
-            </div>
+    <div >
+        <h1 className="display-4 text-center">Club Members Profile</h1>
+        <p className="lead text-center">Browse and connect</p>
+        <div className="profiles-cards-container">
+          {profilesData}
         </div>        
-      </div>
+    </div>
     )
   }
 }

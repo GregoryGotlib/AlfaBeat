@@ -19,7 +19,6 @@ router.post('/register',(req,res)=>{
     const { errors, isValid } = validateRegInput(req.body);
     
     if(!isValid){
-        console.log(errors);
         return res.status(400).json(errors);
     }
 
@@ -55,7 +54,7 @@ router.post('/register',(req,res)=>{
 
 // Login
 router.post('/login',(req,res)=>{
-
+console.log('REQUEST BODY:',req.body)
     const { errors, isValid } = validateLoginInput(req.body);
     
     // Check registration validation

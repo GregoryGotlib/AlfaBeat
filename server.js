@@ -31,6 +31,7 @@ app.use('/api/profile',profile);
 app.use(express.static(uploadsDir));
 
 // Static files for prod
+console.log(process.env)
 if(process.env.NODE_ENV === 'production'){
     app.use(express.static('client/build'));
 
@@ -45,4 +46,3 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT , ()=>
     console.log('Server running on port:',PORT)
 )
-

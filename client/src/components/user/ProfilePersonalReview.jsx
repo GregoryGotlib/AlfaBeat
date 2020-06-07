@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import cheakInput from '../../utilities/checkInput';
+import '../../style/ProfilePersonalReview.css';
 
 export default class ProfilePersonalReview extends Component {
   render() {
@@ -12,12 +12,10 @@ export default class ProfilePersonalReview extends Component {
     ))
 
     return (
-    <div class="row">
-        <div class="col-md-12">
-        <h3 class="text-center text-info">{userFirstName}'s personal review</h3>
-          <div class="card card-body bg-light mb-3">
-            <p class="lead">{personalReview}</p>
-          </div>
+    <div className="">
+        <p className="review-p">{userFirstName}'s personal review</p>
+        <div className="card card-body bg-light mb-3" id='profile-review-card'>
+          <p className="lead">{personalReview.length ? personalReview : <p>There is no reviews yet ..</p>}</p>
         </div>
     </div>
 

@@ -7,6 +7,7 @@ import ProfilePersonalReview from './ProfilePersonalReview';
 import ProfileImageDisplay from './ProfileImageDisplay';
 import ProfileCarInfo from './ProfileCarInfo';
 import Spinner from '../foundation/Spinner';
+import '../../style/ProfileGenerator.css';
 
 
  class ProfileGenerator extends Component {
@@ -29,14 +30,6 @@ import Spinner from '../foundation/Spinner';
     else{
       profileData = (
         <div>
-          <div className="row">
-            <div className="col-md-6">
-              <a href="/profiles" className="btn btn-danger mb-3 float-left">
-                Go back to profiles
-              </a>
-            </div>
-            <div className="col-md-6"/>
-          </div>
           <ProfileHeaderView profile={profile}/>
           <ProfilePersonalReview profile={profile}/>
           <ProfileCarInfo carInfo={profile.carInfo}/>
@@ -45,14 +38,8 @@ import Spinner from '../foundation/Spinner';
       )
     }
     return (
-    <div className="profile">
-      <div className="container">
-        <div className="row">
-          <div className="col-md-12">
-            {profileData}
-          </div>
-        </div>
-      </div>
+    <div className="profile-container">
+      {profileData}
     </div>  
     )
   }

@@ -11,7 +11,6 @@ options.secretOrKey = keys.secretOrKey;
 module.exports = (passport) =>{
 passport.use(new JwtStrategy(options, (jwt_data,done)=>{
         // JWT - data generates data from users.js
-        console.log(jwt_data);
         User.findById(jwt_data.id).then(user=>{
             // user has been found ..
             if(user){

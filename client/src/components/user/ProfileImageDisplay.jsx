@@ -1,31 +1,32 @@
 import React, { Component } from 'react'
 import './ProfileImageDisplay.css'
-import logo from '../../images/greenStar.png';
-
+import moment from 'moment'
+import '../../style/ProfileImageDisplay.css';
 
 
 export default class ProfileImageDisplay extends Component {
 
   render() {
-    console.log(this.props)
-      const imgs = this.props.image.map(image => (
-          <img src={image.path}/>
-      ))
+    
+    const images = this.props.image.map(image=>(  
+     
+      <div className="card" key={image._id} id='flex-row-item' id='profile-card'>
+          <img src={image.path} className="card-img-top" alt="..."/>
+          <div className="card-body">
+              <p className="card-text"><small className="text-muted">{moment(image.date).format('L')}</small></p>
+              <button onClick={() => this.deleteHandler(image._id)} className="btn btn-danger">Delete Image</button>
+          </div>
+      </div>
+
+))  
 
     return (
-    <div class="row">
-        <div class="col-md-12">
-          <h3 class="text-center text-info">Photo album</h3>
-          <div class="card card-body bg-light mb-3">
-            <p class="lead"/>
-            <div className="xop-section" >
-              <ul className="xop-grid">
-                {imgs}
-              </ul>   
-            </div>
-          </div>
-        </div>
+  <div style={{textAlign:"center"}}>
+    <p className='image-p'>Image album</p>
+    <div className="card-group" id='flex-row-container'>
+          {images.length ? images : <p>There is no image uploads yet ..</p>}
     </div>
+  </div>
     )
   }
 }

@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { regUser } from '../../actions/auth';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import '../../style/Register.css';
 
 class Register extends Component {
   constructor(){
@@ -59,7 +60,9 @@ class Register extends Component {
   render() {
     const errors = this.props.errors;
   return (
-<div className="card mt-20 shadow p-3 mb-5 bg-white rounded">
+
+<div className='register-container'>
+<div className="card mt-20 shadow p-3 mb-5 bg-white rounded" id='register-card'>
   <div className="register">
     <div className="container">
       <div className="row">
@@ -70,13 +73,13 @@ class Register extends Component {
             <div className="form-group">
               <input type="text" className={classnames('form-control form-control-lg',{
                 'is-invalid': errors.name})} 
-                placeholder="Your full name" name="name" value={this.state.name} 
+                placeholder="Full name" name="name" value={this.state.name} 
                 onChange={this.nameHandler} />
                 {errors.name && (<div className="invalid-feedback">{errors.name}</div>)}
             </div>
             <div className="form-group">
               <input type="email" className={classnames('form-control form-control-lg',{
-                'is-invalid':errors.email})} placeholder="Email Address" name="email" 
+                'is-invalid':errors.email})} placeholder="Email address" name="email" 
                 value={this.state.email} onChange={this.emailHandler}/>
                 {errors.email && (<div className="invalid-feedback">{errors.email}</div>)}
               <small className="form-text text-muted">This site uses Gravatar so if you want a profile image, use a Gravatar email</small>
@@ -90,16 +93,20 @@ class Register extends Component {
             </div>
             <div className="form-group">
               <input type="password" className={classnames('form-control form-control-lg',{
-                'is-invalid':errors.confirmPassword})} placeholder="Confirm Password" name="confirmPassword" value={this.state.confirmPassword} 
+                'is-invalid':errors.confirmPassword})} placeholder="Confirm password" name="confirmPassword" value={this.state.confirmPassword} 
               onChange={this.confirmPasswordHandler} />
               {errors.confirmPassword && (<div className="invalid-feedback">{errors.confirmPassword}</div>)}
             </div>
-            <input type="submit" className="btn btn-success btn-block mt-4" />
+            <div className='buttons-container'>
+              <input type="submit" className="btn btn-success" />
+              <a className="btn btn-danger" href='/'> Cancel</a>
+            </div>
           </form>
         </div>
       </div>
     </div>
   </div>
+</div>
 </div>
     )
   }

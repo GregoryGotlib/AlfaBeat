@@ -3,13 +3,12 @@ img {
 }
 
 .Base {
-  position: relative;
-  background: url('./images/mainBackground.jpg') no-repeat;
+  background: url(/static/media/mainBackground.7f3da3b6.jpg) no-repeat;
   background-size: cover;
   background-position: center;
-  height: 100vh;
-  margin-top: -24px;
-  margin-bottom: -50px;
+  height: 100%;
+  position: fixed;
+  width: 100%;
 }
 
 .Base-inner {
@@ -18,7 +17,6 @@ img {
 
 .dark-overlay {
   background-color: rgba(0, 0, 0, 0.4);
-  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -37,3 +35,26 @@ img {
 .form-control::placeholder {
   color: #bbb !important;
 }
+
+.navbar{
+  margin-bottom: 0 !important;
+}
+
+.lead{
+  padding-bottom: 1px;
+}
+
+
+  @media(max-width:700px){
+    .display-2{
+      font-size: 50px;
+    }
+  }
+
+  html, #root, .App {
+    height: 100%;
+    min-width: fit-content;
+    margin: 0;
+    padding: 0;
+  }
+  
