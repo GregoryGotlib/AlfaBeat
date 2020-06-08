@@ -4,3 +4,14 @@
     align-items: center;
     margin-top: 5px;
 }
+
+.posts-feed-p{
+    text-align: center;
+    margin-top: 20px;
+    font-weight: 400;
+    font-size: 22px;
+}
+
+.new1{
+    width: 38%;
+}

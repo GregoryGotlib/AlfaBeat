@@ -4,7 +4,6 @@ import { getProfile, deleteAccount } from '../../actions/profile';
 import { logOutUser } from '../../actions/auth';
 import Spinner from '../foundation/Spinner';
 import propTypes from 'prop-types';
-import Profile from '../user/Profile';
 import EditProfile from '../user/EditProfile';
 import CarInfo from '../user/CarInfo';
 import Images from '../user/Images';
@@ -56,7 +55,7 @@ class Dashboard extends Component {
     }
 
     return (
-      <>
+      <div className='dashboard-wrapper'>
       <div className='navs-container'>
         <nav id='navs'>
           <div className="nav nav-tabs" id="nav-tab" role="tablist">
@@ -74,7 +73,7 @@ class Dashboard extends Component {
         <div className="tab-pane fade" id="nav-info" role="tabpanel" aria-labelledby="nav-info-tab"><CreateCarInfo/></div>
         <div className="tab-pane fade" id="nav-image" role="tabpanel" aria-labelledby="nav-image-tab"><FileUpload/></div>
       </div> 
-      </>  
+      </div>  
       )
   }
 }

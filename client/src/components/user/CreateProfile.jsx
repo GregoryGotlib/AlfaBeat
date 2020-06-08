@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import propTypes from 'prop-types';
 import classnames from 'classnames';
+import '../../style/CreateProfile.css';
 
 class CreateProfile extends Component {
     constructor(props){
@@ -127,9 +128,9 @@ class CreateProfile extends Component {
     );
 
 return (
-<div className="createProfile"> 
-    <div className="container">
-        <div className="row">
+    <div className="create-profile-container">
+        <div className="card" id='create-profile-card'>
+            <div className="card-body">
             <div className="col-md-8 m-auto">
                 <h1 className="display-4 text-center">Create Profile</h1>
                 <p className="lead text-center text-muted">
@@ -176,10 +177,14 @@ return (
                         <small className="form-text text-muted">Where do you live?</small>
                         {errors.location && <div className="invalid-feedback">{errors.location}</div>}
                     </div>
-                    <div className="mb-3">
+                    <div className='mb-3'>
                         {socialData}
-                    <input type="submit" value="Submit" className="btn btn-success btn-block mt-3"/>
+                    <div className="buttons-container">
+                        <input type="submit" className="btn btn-success"/>
+                        <a href="/dashboard" className="btn btn-danger">Go Back</a>
                     </div>
+                    </div>
+
                 </form>
             </div>
         </div>

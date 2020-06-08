@@ -5,6 +5,7 @@ import { likePost } from '../../actions/post';
 import { removeLike } from '../../actions/post';
 import propTypes from 'prop-types';
 import classnames from 'classnames';
+import '../../style/PostData.css';
 
 class PostData extends Component {
 
@@ -34,16 +35,17 @@ likeSelector = (likesArray) =>{
       const displayFormat = this.props.displayFormat;
 
     return (
-    <div className="card card-body mb-3">
-        <div className="row">
-            <div className="col-md-2">
+    <div className="card card-body mb-3" id='post-card'>
+        <div className="post-wrapper">
+            <div className="publisher-data">
                 <a href="/profile">
-                <img className="rounded-circle d-none d-md-block" src={post.avatar}alt="" />
+                <img className="rounded-circle" src={post.avatar}alt="" id='publisher-avatar'/>
                 </a>
                 <br/>
                 <p className="text-center">{post.name}</p>
             </div>
-            <div className="col-md-10">
+            <hr className='post-line'/>
+            <div className="post-data">
                 <p className="lead">{post.text}</p>
 
                 {displayFormat ? (<span><button onClick={()=> this.likeHandler(post._id)} type="button" className="btn btn-light mr-1">

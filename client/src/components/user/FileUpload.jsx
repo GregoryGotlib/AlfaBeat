@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { uploadImage } from "../../actions/profile";
 import { withRouter } from 'react-router';
 import propTypes from "prop-types";
-import img from "../../images/starIcon.png";
 import '../../style/FileUpload.css';
 
 class FileUpload extends Component {
@@ -34,7 +33,7 @@ class FileUpload extends Component {
         <div className="container-fluid page-body-wrapper">
           <div className="container p-5">
             <div
-              className="card border-light mb-3"
+              className="card border-light mb-3" id='fileupload-card'
               style={{ boxShadow: "0 5px 10px 2px rgba(195,192,192,.5)" }}
             >
               <div className="card-header bg-dark">

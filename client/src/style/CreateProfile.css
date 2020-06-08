@@ -1,19 +1,16 @@
-
 .buttons-container{
     display: flex;
     justify-content: space-around;
     margin-top: 5px;
 }
-
-.car-info-container{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    padding: 15px 15px;
-}
-
-#car-info-card-container{
+#create-profile-card{
     -webkit-box-shadow: 1px 19px 16px -8px rgba(0,0,0,0.4);
     -moz-box-shadow: 1px 19px 16px -8px rgba(0,0,0,0.4);
     box-shadow: 1px 19px 16px -8px rgba(0,0,0,0.4);
+}
+
+.create-profile-container{
+    display: flex;
+    justify-content: center;
+    margin: 30px 15px;
 }

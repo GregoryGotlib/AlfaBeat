@@ -2,3 +2,9 @@
     display: flex;
     justify-content: center;
 }
+
+#fileupload-card{
+    margin: 0;
+    height: fit-content;
+    width: 621px;
+}

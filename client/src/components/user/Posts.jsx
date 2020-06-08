@@ -29,7 +29,9 @@ class Posts extends Component {
       <div className="feed">
           <div className="posts-container">
             <PostForm/>
-            {postData}
+            <p className='posts-feed-p'>Posts Feed</p>
+            <hr className="new1"/>
+            {postData ? postData : <p>There is not posts yet ..</p>}
           </div>
       </div>
     )

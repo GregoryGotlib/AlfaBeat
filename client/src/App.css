@@ -3,7 +3,7 @@ img {
 }
 
 .Base {
-  background: url(/static/media/mainBackground.7f3da3b6.jpg) no-repeat;
+  background: url("./images/mainBackground.jpg") no-repeat;
   background-size: cover;
   background-position: center;
   height: 100%;

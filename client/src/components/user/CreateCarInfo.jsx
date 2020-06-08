@@ -217,133 +217,127 @@ onSubmit = (event) =>{
       ));
       
     return (
-    <div className='create-info-form-container'>
-    <div className="card shadow p-3 bg-white rounded">
-      <div className="createCarInfo">
-        <div className="container">
-            <div className="row">
-                <div className="col-md-8 m-auto"> 
-                    <div className="display-4 text-center">Add vehicle  information</div>
-                    <p className="lead text-center">Add your current Alfa Romeo model information</p>
-                    <small className="d-block pb-3">* = required fields</small>
-                    <form onSubmit={this.onSubmit}>
-                        <div className="form-group">
-                            <select
-                                type="text"
-                                className={classnames('form-control form-control-lg', {
-                                'is-invalid': errors.model})}
-                                placeholder="Alfa Romeo Model"
-                                name="model"
-                                value={this.state.model}
-                                onChange={this.modelHandler}
-                            >
-                            {optionSelector}
-                            </select>
-                            <small className="form-text text-muted">* Choose your Alfa Romeo model</small>
-                            {errors.model && <div className="invalid-feedback">{errors.model}</div>}
-                        </div>
-
-                        <div className="form-group">
-                            <select
-                                type="text"
-                                className={classnames('form-control form-control-lg', {
-                                'is-invalid': errors.year})}
-                                placeholder="Model Year"
-                                name="year"
-                                value={this.state.year}
-                                onChange={this.yearHandler}
-                            >
-                            {optionSelector3}
-                            </select>
-                            <small className="form-text text-muted">* Year of manufacture?</small>
-                            {errors.year && <div className="invalid-feedback">{errors.year}</div>}
-                        </div>
-
-                        <div className="form-group">
-                            <select
-                                type="text"
-                                className={classnames('form-control form-control-lg', {
-                                'is-invalid': errors.gearBox})}
-                                placeholder="gearBox"
-                                name="gearBox"
-                                value={this.state.gearBox}
-                                onChange={this.gearBoxHandler}
-                            >
-                            {optionSelector4}
-                            </select>
-                            <small className="form-text text-muted">* What transmission it have?</small>
-                            {errors.gearBox && <div className="invalid-feedback">{errors.gearBox}</div>}
-                        </div>
-
-                        <div className="form-group">
-                            <select
-                                type="text"
-                                className={classnames('form-control form-control-lg', {
-                                'is-invalid': errors.timeOfOwnerShip})}
-                                placeholder="Time Of Ownership"
-                                name="timeOfOwnerShip"
-                                value={this.state.timeOfOwnerShip}
-                                onChange={this.timeOfOwnerShipHandler}
-                            >
-                            {optionSelector2}
-                            </select>
-                            <small className="form-text text-muted">* How much time do you own this vehicle ?</small>
-                            {errors.timeOfOwnerShip && <div className="invalid-feedback">{errors.timeOfOwnerShip}</div>}
-                        </div>
-
-                        <div className="form-group">
-                            <select
-                                type="text"
-                                className={classnames('form-control form-control-lg', {
-                                'is-invalid': errors.rating})}
-                                placeholder="Rating"
-                                name="rating"
-                                value={this.state.rating}
-                                onChange={this.ratingHandler}
-                            >
-                            {optionSelector5}
-                            </select>
-                            <small className="form-text text-muted">* How reliable is your vehicle ?</small>
-                            {errors.rating && <div className="invalid-feedback">{errors.rating}</div>}
-                        </div>
-
-                        <div className="form-check mb-4">
-                            <input
-                                type="checkbox"
-                                className="form-check-input"
-                                name="current"
-                                value={this.state.current}
-                                checked={this.state.current}
-                                onChange={this.onCheck}
-                                id="current"
-                            />
-                            <label htmlFor="current" className="form-check-label">
-                                Still own it</label>
-                        </div>
-
-                        <div className="form-group">
-                            <textarea
-                                className={classnames('form-control form-control-lg', {
-                                'is-invalid': errors.personalReview})}
-                                placeholder="Personal Review"
-                                name="personalReview"
-                                value={this.state.personalReview}
-                                onChange={this.personalReviewHandler}
-                            />
-                            <small className="form-text text-muted">* Write a brief review about your experiences with owning this vehicle </small>
-                            {errors.personalReview && <div className="invalid-feedback">{errors.personalReview}</div>}
-                        </div>
-                        <div className='buttons-container'>
-                            <input type="submit" className="btn btn-success"/>
-                            <a href="/dashboard" className="btn btn-danger">Go Back</a>
-                        </div>
-                    </form>
-                </div>   
+<div className='car-info-container'>
+<div className="card" id='car-info-card-container'>
+  <div className="card-body">
+    <div className="display-4 text-center">Add vehicle  information</div>
+        <p className="lead text-center">Add your current Alfa Romeo model information</p>
+        <small className="d-block pb-3">* = required fields</small>
+        <form onSubmit={this.onSubmit}>
+            <div className="form-group">
+                <select
+                    type="text"
+                    className={classnames('form-control form-control-lg', {
+                    'is-invalid': errors.model})}
+                    placeholder="Alfa Romeo Model"
+                    name="model"
+                    value={this.state.model}
+                    onChange={this.modelHandler}
+                >
+                {optionSelector}
+                </select>
+                <small className="form-text text-muted">* Choose your Alfa Romeo model</small>
+                {errors.model && <div className="invalid-feedback">{errors.model}</div>}
             </div>
-        </div>
-      </div>
-      </div>
-      </div>
+
+            <div className="form-group">
+                <select
+                    type="text"
+                    className={classnames('form-control form-control-lg', {
+                    'is-invalid': errors.year})}
+                    placeholder="Model Year"
+                    name="year"
+                    value={this.state.year}
+                    onChange={this.yearHandler}
+                >
+                {optionSelector3}
+                </select>
+                <small className="form-text text-muted">* Year of manufacture?</small>
+                {errors.year && <div className="invalid-feedback">{errors.year}</div>}
+            </div>
+
+            <div className="form-group">
+                <select
+                    type="text"
+                    className={classnames('form-control form-control-lg', {
+                    'is-invalid': errors.gearBox})}
+                    placeholder="gearBox"
+                    name="gearBox"
+                    value={this.state.gearBox}
+                    onChange={this.gearBoxHandler}
+                >
+                {optionSelector4}
+                </select>
+                <small className="form-text text-muted">* What transmission it have?</small>
+                {errors.gearBox && <div className="invalid-feedback">{errors.gearBox}</div>}
+            </div>
+
+            <div className="form-group">
+                <select
+                    type="text"
+                    className={classnames('form-control form-control-lg', {
+                    'is-invalid': errors.timeOfOwnerShip})}
+                    placeholder="Time Of Ownership"
+                    name="timeOfOwnerShip"
+                    value={this.state.timeOfOwnerShip}
+                    onChange={this.timeOfOwnerShipHandler}
+                >
+                {optionSelector2}
+                </select>
+                <small className="form-text text-muted">* How much time do you own this vehicle ?</small>
+                {errors.timeOfOwnerShip && <div className="invalid-feedback">{errors.timeOfOwnerShip}</div>}
+            </div>
+
+            <div className="form-group">
+                <select
+                    type="text"
+                    className={classnames('form-control form-control-lg', {
+                    'is-invalid': errors.rating})}
+                    placeholder="Rating"
+                    name="rating"
+                    value={this.state.rating}
+                    onChange={this.ratingHandler}
+                >
+                {optionSelector5}
+                </select>
+                <small className="form-text text-muted">* How reliable is your vehicle ?</small>
+                {errors.rating && <div className="invalid-feedback">{errors.rating}</div>}
+            </div>
+
+            <div className="form-check mb-4">
+                <input
+                    type="checkbox"
+                    className="form-check-input"
+                    name="current"
+                    value={this.state.current}
+                    checked={this.state.current}
+                    onChange={this.onCheck}
+                    id="current"
+                />
+                <label htmlFor="current" className="form-check-label">
+                    Still own it</label>
+            </div>
+
+            <div className="form-group">
+                <textarea
+                    className={classnames('form-control form-control-lg', {
+                    'is-invalid': errors.personalReview})}
+                    placeholder="Personal Review"
+                    name="personalReview"
+                    value={this.state.personalReview}
+                    onChange={this.personalReviewHandler}
+                />
+                <small className="form-text text-muted">* Write a brief review about your experiences with owning this vehicle </small>
+                {errors.personalReview && <div className="invalid-feedback">{errors.personalReview}</div>}
+            </div>
+            <div className='buttons-container'>
+                <input type="submit" className="btn btn-success"/>
+                <a href="/dashboard" className="btn btn-danger">Go Back</a>
+            </div>
+        </form>
+    </div>
+    </div>
+</div>
     )
   }
 }

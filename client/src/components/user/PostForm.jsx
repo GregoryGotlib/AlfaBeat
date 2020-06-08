@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { addPost } from '../../actions/post';
 import propTypes from 'prop-types';
 import classnames from 'classnames';
+import '../../style/PostForm.css';
 
 
 
@@ -43,7 +44,7 @@ class PostForm extends Component {
       const errors = this.state.errors;
     return (
         <div className="post-form mb-3">
-            <div className="card card-info">
+            <div className="card card-info" id='new-post-card'>
               <div className="card-header bg-dark text-white">
                 What is on your mind...?
               </div>
